@@ -51,14 +51,14 @@
               <div class="mb-3">
                 <label class="form-label fw-semibold">עדכון סטטוס השתתפות</label>
                 <div class="btn-group w-100" role="group" aria-label="Attendance options">
-                  <input type="radio" class="btn-check" name="status" id="stWaiting" value="waiting" autocomplete="off" checked>
-                  <label class="btn btn-outline-secondary" for="stWaiting">ממתין/ה לאישור</label>
-
                   <input type="radio" class="btn-check" name="status" id="stConfirmed" value="confirmed" autocomplete="off">
-                  <label class="btn btn-outline-success" for="stConfirmed">מאשר/ת השתתפות</label>
-
+                  <label class="btn btn-outline-success" for="stConfirmed">מגיע</label>
+              
                   <input type="radio" class="btn-check" name="status" id="stCancelled" value="cancelled" autocomplete="off">
-                  <label class="btn btn-outline-danger" for="stCancelled">מבטל/ת השתתפות</label>
+                  <label class="btn btn-outline-danger" for="stCancelled">לא מגיע</label>
+                </div>
+                <div id="helperWaiting" class="form-text mt-2 d-none">
+                  הסטטוס הנוכחי שלך הוא <strong>ממתין לאישור</strong>. נא לבחור “מגיע” או “לא מגיע”.
                 </div>
               </div>
 
