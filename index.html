@@ -2,51 +2,112 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>אישור השתתפות בקורס | Fast Lane Israel</title>
   <link rel="icon" href="https://fastlane-israel.com/favicon.ico">
-  <link rel="stylesheet" href="styles.css" />
-  <meta name="color-scheme" content="light">
+  <!-- Bootstrap 5 RTL CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
 </head>
-<body>
-  <header class="fl-header">
-    <img class="fl-logo" alt="Fast Lane Israel" src="https://fastlane-israel.com/wp-content/uploads/2023/03/fastlane-logo.svg">
-  </header>
+<body class="bg-light">
 
-  <main id="card" class="card">
-    <h1 id="courseTitle">טוען פרטי קורס…</h1>
-    <p id="studentName" class="muted"></p>
+  <!-- Navbar / Brand -->
+  <nav class="navbar navbar-expand-md navbar-dark fl-bg-red shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <img src="https://fastlane-israel.com/wp-content/uploads/2023/03/fastlane-logo.svg" alt="Fast Lane Israel" height="30" />
+        <span class="fw-semibold">Fast Lane Israel</span>
+      </a>
+    </div>
+  </nav>
 
-    <section id="statusBlock" class="status-block hidden">
-      <p class="current">סטטוס נוכחי: <strong id="currentStatus">—</strong></p>
+  <!-- Main content -->
+  <main class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8 col-xl-6">
 
-      <fieldset class="fieldset">
-        <legend>עדכון סטטוס השתתפות</legend>
-        <label class="opt"><input type="radio" name="status" value="waiting" checked> ממתין/ה לאישור</label>
-        <label class="opt"><input type="radio" name="status" value="confirmed"> מאשר/ת השתתפות</label>
-        <label class="opt"><input type="radio" name="status" value="cancelled"> מבטל/ת השתתפות</label>
-      </fieldset>
+        <!-- Hero card -->
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+          <div class="card-header bg-white border-0 py-4">
+            <h1 id="courseTitle" class="h4 m-0">טוען פרטי קורס…</h1>
+            <p id="studentName" class="text-secondary small mb-0"></p>
+          </div>
 
-      <button id="saveBtn" class="btn">שמור/י סטטוס</button>
-      <p id="message" class="msg"></p>
-    </section>
+          <div class="card-body pt-0">
+            <!-- Loading -->
+            <div id="loadingRow" class="d-flex align-items-center gap-3 py-4">
+              <div class="spinner-border text-danger" role="status" aria-hidden="true"></div>
+              <div class="text-secondary">טוען נתונים…</div>
+            </div>
 
-    <section id="errorBlock" class="error hidden">
-      <h2>לא הצלחנו לטעון את פרטי ההשתתפות</h2>
-      <p id="errorText" class="muted"></p>
-    </section>
+            <!-- Current status -->
+            <div id="statusRow" class="d-none">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="text-secondary">סטטוס נוכחי:</div>
+                <span id="currentStatusBadge" class="badge rounded-pill text-bg-secondary px-3 py-2">—</span>
+              </div>
+
+              <!-- Status selector -->
+              <div class="mb-3">
+                <label class="form-label fw-semibold">עדכון סטטוס השתתפות</label>
+                <div class="btn-group w-100" role="group" aria-label="Attendance options">
+                  <input type="radio" class="btn-check" name="status" id="stWaiting" value="waiting" autocomplete="off" checked>
+                  <label class="btn btn-outline-secondary" for="stWaiting">ממתין/ה לאישור</label>
+
+                  <input type="radio" class="btn-check" name="status" id="stConfirmed" value="confirmed" autocomplete="off">
+                  <label class="btn btn-outline-success" for="stConfirmed">מאשר/ת השתתפות</label>
+
+                  <input type="radio" class="btn-check" name="status" id="stCancelled" value="cancelled" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="stCancelled">מבטל/ת השתתפות</label>
+                </div>
+              </div>
+
+              <div class="d-grid">
+                <button id="saveBtn" class="btn btn-danger btn-lg rounded-3">
+                  שמור/י סטטוס
+                </button>
+              </div>
+
+              <div id="message" class="form-text mt-3"></div>
+            </div>
+
+            <!-- Error -->
+            <div id="errorRow" class="alert alert-danger d-none mt-3" role="alert">
+              <div class="fw-semibold mb-1">לא הצלחנו לטעון את פרטי ההשתתפות</div>
+              <div id="errorText" class="small"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Help / footer -->
+        <div class="text-center text-secondary small mt-3">
+          © Fast Lane Israel · שאלות? <a class="link-secondary" href="mailto:info@flane.co.il">info@flane.co.il</a>
+        </div>
+
+      </div>
+    </div>
   </main>
 
-  <footer class="fl-footer">
-    <small>© Fast Lane Israel · יש שאלות? <a href="mailto:info@flane.co.il">info@flane.co.il</a></small>
-  </footer>
+  <!-- Toast -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+    <div id="toast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div id="toastBody" class="toast-body">עודכן בהצלחה</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
 
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- App config -->
   <script>
-    // קונפיג בסיסי — שנה לכתובת שלך
     window.FL_CFG = {
-      apiBase: "https://mod-attandace-handler-hacmd3djg0cyd6ah.israelcentral-01.azurewebsites.net/api/MAKE_MOD_MS_attendance?" // לדוגמה: https://teams-attendance-link-handler.azurewebsites.net/api/attendance
+      apiBase: "https://YOUR_FUNCTION.azurewebsites.net/api/attendance" // החלף לכתובת שלך
     };
   </script>
+
   <script src="app.js"></script>
 </body>
 </html>
