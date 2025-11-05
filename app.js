@@ -31,8 +31,8 @@
   // --- UI helpers ---
   const STATUS_LABELS = {
     waiting:   { text: "ממתין/ה לאישור", badge: "badge-waiting"   },
-    confirmed: { text: "מאשר/ת השתתפות", badge: "badge-confirmed" },
-    cancelled: { text: "מבטל/ת השתתפות",  badge: "badge-cancelled"}
+    confirmed: { text: "מגיע",           badge: "badge-confirmed" },
+    cancelled: { text: "לא מגיע",         badge: "badge-cancelled"}
   };
 
   function setBadge(status) {
