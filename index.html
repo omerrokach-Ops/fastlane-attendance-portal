@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>אישור השתתפות בקורס | Fast Lane Israel</title>
+  <link rel="icon" href="https://fastlane-israel.com/favicon.ico">
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="color-scheme" content="light">
+</head>
+<body>
+  <header class="fl-header">
+    <img class="fl-logo" alt="Fast Lane Israel" src="https://fastlane-israel.com/wp-content/uploads/2023/03/fastlane-logo.svg">
+  </header>
+
+  <main id="card" class="card">
+    <h1 id="courseTitle">טוען פרטי קורס…</h1>
+    <p id="studentName" class="muted"></p>
+
+    <section id="statusBlock" class="status-block hidden">
+      <p class="current">סטטוס נוכחי: <strong id="currentStatus">—</strong></p>
+
+      <fieldset class="fieldset">
+        <legend>עדכון סטטוס השתתפות</legend>
+        <label class="opt"><input type="radio" name="status" value="waiting" checked> ממתין/ה לאישור</label>
+        <label class="opt"><input type="radio" name="status" value="confirmed"> מאשר/ת השתתפות</label>
+        <label class="opt"><input type="radio" name="status" value="cancelled"> מבטל/ת השתתפות</label>
+      </fieldset>
+
+      <button id="saveBtn" class="btn">שמור/י סטטוס</button>
+      <p id="message" class="msg"></p>
+    </section>
+
+    <section id="errorBlock" class="error hidden">
+      <h2>לא הצלחנו לטעון את פרטי ההשתתפות</h2>
+      <p id="errorText" class="muted"></p>
+    </section>
+  </main>
+
+  <footer class="fl-footer">
+    <small>© Fast Lane Israel · יש שאלות? <a href="mailto:info@flane.co.il">info@flane.co.il</a></small>
+  </footer>
+
+  <script>
+    // קונפיג בסיסי — שנה לכתובת שלך
+    window.FL_CFG = {
+      apiBase: "https://mod-attandace-handler-hacmd3djg0cyd6ah.israelcentral-01.azurewebsites.net/api/MAKE_MOD_MS_attendance?" // לדוגמה: https://teams-attendance-link-handler.azurewebsites.net/api/attendance
+    };
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
