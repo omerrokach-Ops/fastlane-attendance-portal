@@ -55,7 +55,8 @@
 
     try {
       const url = buildUrl(`ticket=${encodeURIComponent(ticket)}`);
-      const res = await fetch(url, { headers: { "Accept": "application/json" } });
+      const res = await fetch(url, { headers: { "Accept": "application/json",
+            "X-Auth": "FastLane2025Secret!" } });
 
       // ננסה לפרש JSON גם במקרה של שגיאה כדי להציג הודעה מועילה
       let data = null;
@@ -106,7 +107,8 @@
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
+          "Accept": "application/json",
+          "X-Auth": "FastLane2025Secret!"
         },
         body: JSON.stringify({ ticket, status: choice })
       });
